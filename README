@@ -2,6 +2,11 @@ Simple python server for whisper.cpp
 
 Probably not secure, put it behind basic auth
 
+Builds with WHISPER_CUBLAS=1. If you want CPU inference, would need a different Dockerfile. Honestly, even with CUBLAS, this may be CPU bound in a lot of cases.
+
+Hard coded thread count of 4. Should probably be smartly decided based on number of threads available to CPU.
+
+USAGE:
 Post an AV file with any name to:
 
     http://localhost:8080/transcribe
@@ -10,3 +15,11 @@ Optional query arg:
 ?f=stream -> stream stdout/stderr from whisper.cpp, with output files at end
 ?f=srt -> just an SRT, at end of run
 ?f=txt -> just a TXT, at end of run
+
+
+BUILD:
+$ sudo docker build --tag whisper-serv:latest .
+
+
+RUN: (exposes on port 8807)
+$ sudo docker run -d --restart=unless-stopped --gpus all --ipc=host --name "whisper-serv" -p "0.0.0.0:8807:8080" whisper-serv:latest
