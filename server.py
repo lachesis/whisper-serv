@@ -181,5 +181,5 @@ async def transcribe():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    app.run(debug=debug, use_reloader=not debug, port=8080)
+    app.run(debug=debug, use_reloader=not debug, port=8080, host='0.0.0.0')
 
