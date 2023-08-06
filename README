@@ -1,0 +1,12 @@
+Simple python server for whisper.cpp
+
+Probably not secure, put it behind basic auth
+
+Post an AV file with any name to:
+
+    http://localhost:8080/transcribe
+
+Optional query arg:
+?f=stream -> stream stdout/stderr from whisper.cpp, with output files at end
+?f=srt -> just an SRT, at end of run
+?f=txt -> just a TXT, at end of run
