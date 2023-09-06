@@ -16,10 +16,12 @@ Optional query arg:
 ?f=srt -> just an SRT, at end of run
 ?f=txt -> just a TXT, at end of run
 
+e.g.
+$ curl -F file=@vid.mp4 "http://localhost:8080/transcribe?f=srt" > vid.srt
 
 BUILD:
 $ sudo docker build --tag whisper-serv:latest .
 
 
-RUN: (exposes on port 8807)
-$ sudo docker run -d --restart=unless-stopped --gpus all --ipc=host --name "whisper-serv" -p "0.0.0.0:8807:8080" whisper-serv:latest
+RUN: (exposes to world on port 8807)
+$ sudo docker run -d --restart=unless-stopped --gpus all --ipc=host --name whisper-serv -p 0.0.0.0:8807:8080 whisper-serv:latest
