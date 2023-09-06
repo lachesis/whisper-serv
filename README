@@ -6,6 +6,7 @@ Builds with WHISPER_CUBLAS=1. If you want CPU inference, would need a different 
 
 Hard coded thread count of 4. Should probably be smartly decided based on number of threads available to CPU.
 
+
 USAGE:
 Post an AV file with any name to:
 
@@ -18,6 +19,7 @@ Optional query arg:
 
 e.g.
 $ curl -F file=@vid.mp4 "http://localhost:8080/transcribe?f=srt" > vid.srt
+
 
 BUILD:
 $ sudo docker build --tag whisper-serv:latest .
